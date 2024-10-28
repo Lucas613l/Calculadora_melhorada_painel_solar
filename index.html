@@ -10,20 +10,20 @@
     <div class="container">
         <h1>Calculadora de Painéis Solares</h1>
         
-        <label for="contaMensal">Valor da conta de energia (em R$):</label>
-        <input type="number" id="contaMensal" step="0.01" placeholder="Ex: 191,50">
+        <label for="valorConta">Valor da conta de energia (em R$):</label>
+        <input type="number" id="valorConta" step="0.01" placeholder="Ex: 191,50">
 
         <label for="custoKwh">Custo por kWh (em R$):</label>
         <input type="number" id="custoKwh" step="0.01" placeholder="Ex: 0,70">
 
         <label for="potenciaPainel">Potência do painel (em W):</label>
-        <input type="number" id="potenciaPainel" placeholder="Ex: 150">
+        <input type="number" id="potenciaPainel" placeholder="Ex: 510">
 
-        <label for="eficienciaPainel">Eficiência do painel (em decimal):</label>
-        <input type="number" id="eficienciaPainel" step="0.01" placeholder="Ex: 0,20">
-
-        <label for="incidenciaSolar">Incidência solar média (em kWh/m²/dia):</label>
+        <label for="incidenciaSolar">Irradiação solar média diária (em h/dia):</label>
         <input type="number" id="incidenciaSolar" step="0.01" placeholder="Ex: 5,10">
+
+        <label for="eficienciaPainel">Eficiência do painel (%):</label>
+        <input type="number" id="eficienciaPainel" step="0.01" placeholder="Ex: 20">
 
         <button onclick="calcularPaineis()">Calcular</button>
 
