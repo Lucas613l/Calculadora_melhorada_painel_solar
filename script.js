@@ -1,25 +1,29 @@
-function calcularPaineis() {
-    const consumoMensal = parseFloat(document.getElementById('consumo').value);
-    const potenciaPainel = parseFloat(document.getElementById('potencia').value);
-    const irradiacaoDiaria = parseFloat(document.getElementById('irradiacao').value);
-    const eficienciaPainel = parseFloat(document.getElementById('eficiencia').value) / 100;
+// script.js
 
-    // Verificando se os valores são válidos
-    if (isNaN(consumoMensal) || isNaN(potenciaPainel) || isNaN(irradiacaoDiaria) || isNaN(eficienciaPainel)) {
-        document.getElementById('resultado').innerHTML = "Por favor, preencha todos os campos.";
+function calcularPaineis() {
+    // Obter valores dos campos de entrada
+    const contaMensal = parseFloat(document.getElementById("contaMensal").value.replace(',', '.'));
+    const custoKwh = parseFloat(document.getElementById("custoKwh").value.replace(',', '.'));
+    const potenciaPainel = parseFloat(document.getElementById("potenciaPainel").value);
+    const eficienciaPainel = parseFloat(document.getElementById("eficienciaPainel").value);
+    const incidenciaSolar = parseFloat(document.getElementById("incidenciaSolar").value.replace(',', '.'));
+
+    // Verificar se todos os campos foram preenchidos corretamente
+    if (isNaN(contaMensal) || isNaN(custoKwh) || isNaN(potenciaPainel) || isNaN(eficienciaPainel) || isNaN(incidenciaSolar)) {
+        document.getElementById("resultado").textContent = "Por favor, preencha todos os campos corretamente.";
         return;
     }
 
-    // Cálculo da energia gerada por painel em um mês
-    const geracaoPainelMensal = (potenciaPainel / 1000) * irradiacaoDiaria * 30 * eficienciaPainel;
+    // Calcular consumo mensal em kWh
+    const consumoMensal = contaMensal / custoKwh;
 
-    // Cálculo do número de painéis necessários (arredondando para cima)
-    const numPaineis = Math.ceil(consumoMensal / geracaoPainelMensal);
+    // Calcular a produção de energia de um painel em kWh/mês
+    const producaoPorPainelDia = (potenciaPainel * incidenciaSolar * eficienciaPainel) / 1000;
+    const producaoPorPainelMes = producaoPorPainelDia * 30;
 
-    // Mensagem de saída
-    let mensagem = `
-        Você precisará de aproximadamente <strong>${numPaineis}</strong> painéis solares para cobrir seu consumo mensal de ${consumoMensal} kWh.
-    `;
+    // Calcular a quantidade de painéis necessários
+    const quantidadePaineis = consumoMensal / producaoPorPainelMes;
 
-    document.getElementById('resultado').innerHTML = mensagem;
+    // Exibir resultado
+    document.getElementById("resultado").textContent = `Você precisará de aproximadamente ${Math.ceil(quantidadePaineis)} painéis solares.`;
 }
