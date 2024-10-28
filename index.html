@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,27 +7,29 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="container">
+        <h1>Calculadora de Painéis Solares</h1>
+        
+        <label for="contaMensal">Valor da conta de energia (em R$):</label>
+        <input type="number" id="contaMensal" step="0.01" placeholder="Ex: 191,50">
 
-<div class="container">
-    <h1>Calculadora de Painéis Solares</h1>
+        <label for="custoKwh">Custo por kWh (em R$):</label>
+        <input type="number" id="custoKwh" step="0.01" placeholder="Ex: 0,70">
 
-    <label>Consumo mensal (kWh):</label>
-    <input type="number" id="consumo" value="250" required>
+        <label for="potenciaPainel">Potência do painel (em W):</label>
+        <input type="number" id="potenciaPainel" placeholder="Ex: 150">
 
-    <label>Potência do painel (W):</label>
-    <input type="number" id="potencia" value="510" required>
+        <label for="eficienciaPainel">Eficiência do painel (em decimal):</label>
+        <input type="number" id="eficienciaPainel" step="0.01" placeholder="Ex: 0,20">
 
-    <label>Irradiação solar média diária (h/dia):</label>
-    <input type="number" step="0.1" id="irradiacao" value="5.1" required>
+        <label for="incidenciaSolar">Incidência solar média (em kWh/m²/dia):</label>
+        <input type="number" id="incidenciaSolar" step="0.01" placeholder="Ex: 5,10">
 
-    <label>Eficiência do painel (%):</label>
-    <input type="number" step="0.1" id="eficiencia" value="24.1" required>
+        <button onclick="calcularPaineis()">Calcular</button>
 
-    <button onclick="calcularPaineis()">Calcular</button>
+        <div id="resultado"></div>
+    </div>
 
-    <div class="result" id="resultado"></div>
-</div>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
